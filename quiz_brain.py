@@ -7,6 +7,12 @@ class QuizBrain:
         self.game_is_on = True
         self.score = 0
 
+    def mark_quiz_complete(self):
+        print('\n')
+        print("You've completed the quiz")
+        print(f"Your final score was: {self.score}/{self.quiz_length}")
+        self.game_is_on = False
+
     def check_answer(self, users_answer, correct_answer):
         answered_correct = users_answer.lower() == correct_answer.lower()
         if answered_correct:
@@ -16,7 +22,7 @@ class QuizBrain:
         print(f'Your current score is: {self.score}/{self.current_question_number}.')
         print('\n')
         if self.current_question_number == self.quiz_length:
-            self.game_is_on = False
+            self.mark_quiz_complete()
 
     def move_to_next_question(self, users_answer):
         self.check_answer(users_answer, self.current_question.answer)
